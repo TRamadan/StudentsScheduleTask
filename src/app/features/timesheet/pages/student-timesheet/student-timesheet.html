@@ -1,0 +1,50 @@
+<div class="container mt-4">
+
+  <div class="card p-3 shadow">
+    <div class="row g-2">
+      <div class="col-md-8">
+        <input class="form-control" placeholder="Enter Student ID, for example 12345" (input)="studentId.set($any($event.target).value)">
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-primary w-100" (click)="search()">
+          Load Timesheet
+        </button>
+      </div>
+    </div>
+  </div>
+
+  @if (facade.loadingTimesheetState()) {
+  <div class="text-center mt-3">
+    <div class="spinner-border"></div>
+  </div>
+  }
+
+  @if (facade.timesheetData(); as data) {
+
+  <h4 class="mt-4">
+    {{ data.name }} ({{ data.studentId }})
+  </h4>
+
+  <table class="table table-bordered table-striped mt-2">
+    <thead class="table-dark">
+      <tr>
+        <th>Subject</th>
+        <th>Day</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (cls of data.classSchedule; track cls.day + cls.startTime) {
+      <tr [class.table-success]="
+     isCurrentOrNextClass(cls)
+      ">
+        <td>{{ cls.subject }}</td>
+        <td>{{ cls.day }}</td>
+        <td>{{ cls.startTime }} - {{ cls.endTime }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  }
+</div>
