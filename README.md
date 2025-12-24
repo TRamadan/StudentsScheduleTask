@@ -1,59 +1,139 @@
-# SystemsLimitedTask
+Smart Student Timesheet System Introduction
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.11.
+The Smart Student Timesheet System is a web application designed to
+display a student\'s timetable based on their name and ID. The system
+provides the full schedule of classes for each student and highlights
+the current class based on the system\'s time and day. Additionally, it
+can optionally indicate the next upcoming class.
 
-## Development server
+Task Description
 
-To start a local development server, run:
+The project includes a mockup API that retrieves the student's timesheet
+and the classes assigned to them, including the day, start time, and end
+time.
 
-```bash
+The user interface allows a student to enter their ID to fetch and
+display their schedule in a table format, with the current or next class
+highlighted automatically.
+
+Features
+
+Enter Student ID to fetch timesheet.
+
+Display student details: Name, ID, Hours Attended.
+
+Table listing the student's classes:
+
+Subject
+
+Day
+
+Start and End Time
+
+Automatic highlighting of the current class or the next upcoming class.
+
+Fully responsive UI.
+
+Implementation Details Architecture Patterns
+
+Façade Pattern: Used to abstract communication between UI components and
+the data layer (mock API), including all business logic.
+
+Strategy Pattern: Implemented in the data layer for defining contracts
+and concrete API strategies.
+
+Coding Practices
+
+Clean and readable code.
+
+Components do not contain any HTTP calls; all data access goes through
+the facade.
+
+Request and response objects are mapped into TypeScript interfaces.
+
+Attributes are not initialized with dummy values, ensuring correct type
+safety.
+
+Lazy loading is used for optimization of modules.
+
+OOP principles are followed for scalable and maintainable code.
+
+Mock API
+
+Created using Postman.
+
+API uses a POST request with headers including sessionID (an encrypted
+combination of timestamp + student ID).
+
+Supports one or two student records for demonstration purposes.
+
+Returns JSON responses containing student info and classSchedule.
+
+Example Response:
+
+{ \"status\": \"200\", \"message\": \"Students received successfully\",
+\"count\": 2, \"data\": \[ { \"studentId\": \"12345\", \"name\": \"Ahmed
+Mohamed\", \"date\": \"2025-01-20\", \"hoursAttended\": 6,
+\"classSchedule\": \[ { \"subject\": \"Mathematics\", \"day\":
+\"Monday\", \"startTime\": \"09:00\", \"endTime\": \"11:00\" }, {
+\"subject\": \"Physics\", \"day\": \"Monday\", \"startTime\": \"12:00\",
+\"endTime\": \"14:00\" } \] } \] }
+
+Setup Instructions
+
+Clone the repository:
+
+git clone \<repository-url\>
+
+Navigate to the project folder:
+
+cd smart-student-timesheet
+
+Install dependencies:
+
+npm install
+
+Run the application:
+
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open the app in your browser at:
 
-## Code scaffolding
+http://localhost:4200
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Key Tips
 
-```bash
-ng generate component component-name
-```
+Identify the current and next class based on day and time.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Use facade to isolate business logic from the UI.
 
-```bash
-ng generate --help
-```
+Keep the UI components clean; no direct HTTP calls.
 
-## Building
+Use interfaces for all request and response objects.
 
-To build the project run:
+Follow OOP and scalable design principles.
 
-```bash
-ng build
-```
+Project Structure src/ │ ├─ app/ │ ├─ features/ │ │ ├─ timesheet/ │ │ │
+├─ pages/ \# UI Components │ │ │ ├─ services/ \# API services │ │ │ ├─
+strategies/ \# Strategy pattern implementations │ │ │ └─ facades/ \#
+Façade for business logic │ ├─ assets/ ├─ environments/ └─ README.md
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Technology Stack
 
-## Running unit tests
+Angular 18+
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+TypeScript
 
-```bash
-ng test
-```
+Bootstrap 5 for responsive design
 
-## Running end-to-end tests
+RxJS for reactive data handling
 
-For end-to-end (e2e) testing, run:
+Postman for mock API
 
-```bash
-ng e2e
-```
+Notes
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+The system is designed for scalability and maintainability.
 
-## Additional Resources
+Easily extendable to multiple students or real API integration.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Highlights classes dynamically without reloading the page.
