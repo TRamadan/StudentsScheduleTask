@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "faff9091-239f-47c0-99a0-d1394ccf6ce3",
+		"name": "Mock Student API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9719722"
+	},
+	"item": [
+		{
+			"name": "StudentAPI",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "sessionID",
+						"value": "1695200000_1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"studentId\": \"1001\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://b646cf70-f3eb-4e02-8284-952e3bc066fd.mock.pstmn.io/student/timesheet",
+					"protocol": "https",
+					"host": [
+						"b646cf70-f3eb-4e02-8284-952e3bc066fd",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"student",
+						"timesheet"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "StudentAPI",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "sessionID",
+								"value": "1695200000_1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"studentId\": \"1001\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://b646cf70-f3eb-4e02-8284-952e3bc066fd.mock.pstmn.io/student/timesheet",
+							"protocol": "https",
+							"host": [
+								"b646cf70-f3eb-4e02-8284-952e3bc066fd",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"student",
+								"timesheet"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": "{\n  \"status\": \"200\",\n  \"message\": \"Students received successfully\",\n  \"count\": 2,\n  \"data\": [\n    {\n      \"studentId\": \"12345\",\n      \"date\": \"2025-01-20\",\n      \"name\" :\"Ahmed Mohamed\",\n      \"hoursAttended\": 6,\n      \"classSchedule\": [\n        {\n        \"subject\" : \"Mathematics\",\n          \"day\": \"Monday\",\n          \"startTime\": \"09:00\",\n          \"endTime\": \"11:00\"\n        },\n        {\n            \"subject\" : \"Physics\",\n          \"day\": \"Monday\",\n          \"startTime\": \"12:00\",\n          \"endTime\": \"14:00\"\n        },\n        {\n            \"subject\" : \"Data Structures\",\n          \"day\": \"Thursday\",\n          \"startTime\": \"10:00\",\n          \"endTime\": \"13:00\"\n        }\n      ]\n    }\n  ]\n}"
+				}
+			]
+		}
+	]
+}
