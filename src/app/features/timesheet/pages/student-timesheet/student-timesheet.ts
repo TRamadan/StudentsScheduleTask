@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './student-timesheet.css',
 })
 export class StudentTimesheet {
-  studentId = signal('1234');
+  studentId = signal('');
   timeSheet = signal<StudentTimesheet | null>(null);
 
   
@@ -26,17 +26,7 @@ export class StudentTimesheet {
   } 
 
 
- isCurrentOrNextClass(cls: { day: string; startTime: string; endTime: string }): boolean {
-  const today = new Date().toLocaleString('en', { weekday: 'long' });
-  const currentTime = new Date().toTimeString().slice(0, 5); // "HH:mm"
-  
-  if (cls.day !== today) return false;
-  if (currentTime >= cls.startTime && currentTime <= cls.endTime) return true;
 
-  if (currentTime < cls.startTime) return true;
-
-  return false;
-}
 
   
 }

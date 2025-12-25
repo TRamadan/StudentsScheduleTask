@@ -19,10 +19,10 @@ export class TimesheetFacade {
 
         const sessionId = btoa(`${Date.now()}_${studentId}`);
         this.strategy.getStudentTimesheets({ studentId }, sessionId).subscribe({
-            next: (data : StudentResponse) => {
+            next: (data: StudentResponse) => {
                 const student = data.data?.[0] ?? null;
 
-                this.timesheetData.set(student); 
+                this.timesheetData.set(student);
                 this.loadingTimesheetState.set(false);
             },
             error: () => {
@@ -32,11 +32,31 @@ export class TimesheetFacade {
         })
     }
 
-getCurrentClass(day: string, time: string) {
-  return (cls: { day: string; startTime: string; endTime: string }) =>
-    cls.day === day &&
-    time >= cls.startTime &&
-    time <= cls.endTime;
-}
+    getClassStatus(
+        cls: ClassSchedule,
+        schedule: ClassSchedule[]
+    ): 'current' | 'next' | 'none' {
+
+        const now = new Date();
+        const start = new Date(`${cls.date}T${cls.startTime}:00`);
+        const end = new Date(`${cls.date}T${cls.endTime}:00`);
+        if (now >= start && now <= end) {
+            return 'current';
+        }
+        const nextClass = schedule
+            .map(c => ({
+                c,
+                start: new Date(`${c.date}T${c.startTime}:00`)
+            }))
+            .filter(x => x.start > now)
+            .sort((a, b) => a.start.getTime() - b.start.getTime())[0]?.c;
+
+        if (nextClass === cls) {
+            return 'next';
+        }
+
+        return 'none';
+    }
+
 
 }
