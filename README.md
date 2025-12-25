@@ -68,33 +68,66 @@ src/
 {
   "status": "200",
   "message": "Students received successfully",
-  "count": 2,
+  "count": 1,
   "data": [
     {
       "studentId": "12345",
       "name": "Ahmed Mohamed",
-      "date": "2025-01-20",
-      "hoursAttended": 6,
+      "hoursAttended": 18,
       "classSchedule": [
         {
+          "subject": "Computer Science",
+          "day": "Thursday",
+          "date": "2025-12-25",
+          "startTime": "08:49",
+          "endTime": "11:00"
+        },
+        {
           "subject": "Mathematics",
-          "day": "Monday",
+          "day": "Saturday",
+          "date": "2025-12-27",
           "startTime": "09:00",
           "endTime": "11:00"
         },
         {
           "subject": "Physics",
+          "day": "Sunday",
+          "date": "2025-12-28",
+          "startTime": "10:00",
+          "endTime": "12:00"
+        },
+        
+        {
+          "subject": "Algorithms",
           "day": "Monday",
-          "startTime": "12:00",
-          "endTime": "14:00"
+          "date": "2025-12-29",
+          "startTime": "11:00",
+          "endTime": "13:00"
         },
         {
           "subject": "Data Structures",
-          "day": "Thursday",
+          "day": "Tuesday",
+          "date": "2025-01-30",
           "startTime": "10:00",
           "endTime": "13:00"
+        },
+        {
+          "subject": "Data Structures",
+          "day": "Wedensday",
+          "date": "2025-01-31",
+          "startTime": "10:00",
+          "endTime": "13:00"
+        },
+
+        {
+          "subject": "Software Engineering",
+          "day": "Thursday",
+          "date": "2026-01-01",
+          "startTime": "12:00",
+          "endTime": "14:00"
         }
       ]
     }
   ]
 }
+
